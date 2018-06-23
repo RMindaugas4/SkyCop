@@ -10,7 +10,6 @@ import java.util.UUID;
 public class UserAccountTests extends BaseTest {
 
     private String expectedNameField;
-    private String expectedSurnameField = "Date that can be lost";
 
     /**
      * Test is about checking if the user input value is not lost when user switch between tabs.
@@ -29,7 +28,7 @@ public class UserAccountTests extends BaseTest {
         loginPage.fillEmailField(DTO.login2).fillPasswordField(DTO.pass).clickLoginButton();
         wait.until(ExpectedConditions.visibilityOf(profilePage.getFirstNameField()));
 
-        profilePage.fillFirstName(expectedNameField).fillSurname(expectedSurnameField).clickPayoutTab().clickEditProfileTab();
+        profilePage.fillFirstName(expectedNameField).clickPayoutTab().clickEditProfileTab();
 
         Assert.assertEquals(profilePage.getFirstNameField().getText(), expectedNameField, "The data has been changed or modified.");
 
